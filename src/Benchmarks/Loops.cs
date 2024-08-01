@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,82 @@ namespace Benchmarks
             {
                 sum += n;
             }
+        }
+
+        [Benchmark]
+        public void SumForEachWithIL()
+        {
+            var numbers = new int[] { 1, 2, 3, 4, 5 };
+
+            var method = new DynamicMethod("SumNumbers", typeof(int), new Type[] { typeof(int[]) }, typeof(Program).Module);
+            var il = method.GetILGenerator();
+
+            // Local variable for the sum
+            il.DeclareLocal(typeof(int)); // sum
+                                          // Local variable for the loop index
+            il.DeclareLocal(typeof(int)); // i
+
+            // Initialize sum to 0
+            il.Emit(OpCodes.Ldc_I4_0);
+            il.Emit(OpCodes.Stloc_0);
+
+            // Initialize i to 0
+            il.Emit(OpCodes.Ldc_I4_0);
+            il.Emit(OpCodes.Stloc_1);
+
+            // Define labels for the loop control
+            var loopCheck = il.DefineLabel();
+            var loopStart = il.DefineLabel();
+
+            // Jump to the loop check
+            il.Emit(OpCodes.Br_S, loopCheck);
+
+            // Start of the loop
+            il.MarkLabel(loopStart);
+
+            // Load sum
+            il.Emit(OpCodes.Ldloc_0);
+
+            // Load numbers[i]
+            il.Emit(OpCodes.Ldarg_0);
+            il.Emit(OpCodes.Ldloc_1);
+            il.Emit(OpCodes.Ldelem_I4);
+
+            // Add numbers[i] to sum
+            il.Emit(OpCodes.Add);
+
+            // Store the result back in sum
+            il.Emit(OpCodes.Stloc_0);
+
+            // Increment i
+            il.Emit(OpCodes.Ldloc_1);
+            il.Emit(OpCodes.Ldc_I4_1);
+            il.Emit(OpCodes.Add);
+            il.Emit(OpCodes.Stloc_1);
+
+            // Loop check
+            il.MarkLabel(loopCheck);
+
+            // Load i
+            il.Emit(OpCodes.Ldloc_1);
+
+            // Load numbers.Length
+            il.Emit(OpCodes.Ldarg_0);
+            il.Emit(OpCodes.Ldlen);
+            il.Emit(OpCodes.Conv_I4);
+
+            // Compare i < numbers.Length
+            il.Emit(OpCodes.Blt_S, loopStart);
+
+            // Load the final sum
+            il.Emit(OpCodes.Ldloc_0);
+
+            // Return the sum
+            il.Emit(OpCodes.Ret);
+
+            // Create a delegate and invoke the method
+            var sumNumbers = (Func<int[], int>)method.CreateDelegate(typeof(Func<int[], int>));
+            var sum = sumNumbers(numbers);
         }
 
         [Benchmark]
