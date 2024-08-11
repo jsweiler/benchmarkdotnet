@@ -5,11 +5,13 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmarks", "Benchmarks.csproj", "{E4DD766E-ABD0-461C-BB10-F2CEDE0C4FF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryLeak.Timer", "..\Memory\MemoryLeak.Timer.csproj", "{40217397-E6E4-42AB-A6F4-17C921306CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryLeak.Timer", "..\Memory\MemoryLeak.Timer.csproj", "{40217397-E6E4-42AB-A6F4-17C921306CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryLeak.StaticReference", "..\MemoryLeak.StaticReference\MemoryLeak.StaticReference.csproj", "{5E60335D-D822-42CB-9E57-5F868982FD1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryLeak.StaticReference", "..\MemoryLeak.StaticReference\MemoryLeak.StaticReference.csproj", "{5E60335D-D822-42CB-9E57-5F868982FD1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Performance.Primes", "..\Performance.Primes\Performance.Primes.csproj", "{6AE04DB0-ADEA-42B8-859B-443803B19497}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Performance.Primes", "..\Performance.Primes\Performance.Primes.csproj", "{6AE04DB0-ADEA-42B8-859B-443803B19497}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Performance.Concatenation", "..\Performance.Concatenation\Performance.Concatenation.csproj", "{6C2F6195-A5AB-4266-9E51-43B2608A5CED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6AE04DB0-ADEA-42B8-859B-443803B19497}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AE04DB0-ADEA-42B8-859B-443803B19497}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AE04DB0-ADEA-42B8-859B-443803B19497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C2F6195-A5AB-4266-9E51-43B2608A5CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C2F6195-A5AB-4266-9E51-43B2608A5CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C2F6195-A5AB-4266-9E51-43B2608A5CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C2F6195-A5AB-4266-9E51-43B2608A5CED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
