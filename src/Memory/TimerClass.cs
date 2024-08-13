@@ -10,22 +10,28 @@ namespace Memory
         public TimerClass()
         {
             _timer = new System.Timers.Timer(1000); // Set timer to tick every second
+            Program.TimerManager.TimerEvent += TimerManager_TimerEvent;
+        }
+
+        private void TimerManager_TimerEvent(object? sender, EventArgs e)
+        {
+            Console.WriteLine("Timer manager event fired");
         }
 
         public void StartTimer()
         {
-            _timer.Elapsed += OnTimedEvent;
+            _timer.Elapsed += _timer_Elapsed;
             _timer.Start();
         }
 
-        private void OnTimedEvent(object source, ElapsedEventArgs e)
+        private void _timer_Elapsed(object? sender, ElapsedEventArgs e)
         {
             Console.WriteLine("Timer event fired");
         }
 
         public void Dispose()
         {
-            _timer.Elapsed -= OnTimedEvent;
+            //_timer.Elapsed -= eventHandler;
             _timer.Dispose();
         }
     }

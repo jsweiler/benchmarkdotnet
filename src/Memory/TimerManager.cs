@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace Memory
 {
@@ -10,13 +11,16 @@ namespace Memory
     {
         private List<TimerClass> _leakyObjects = new List<TimerClass>();
 
+        public event EventHandler TimerEvent;
+
         public void StartTimers()
         {
-            for (int i = 0; i < 100000; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 var leakyObject = new TimerClass();
                 _leakyObjects.Add(leakyObject);
                 leakyObject.StartTimer();
+                TimerEvent?.Invoke(this, EventArgs.Empty);
             }
         }
 
