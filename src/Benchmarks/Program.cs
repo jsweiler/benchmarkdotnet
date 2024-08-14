@@ -10,7 +10,9 @@ namespace Benchmarks
 
             //var summary = BenchmarkRunner.Run<Loops>();
 
-            var summary = BenchmarkRunner.Run<Primes>();
+            //var summary = BenchmarkRunner.Run<Primes>();
+
+            var summary = BenchmarkRunner.Run<Concatenation>();
 
             Console.ReadKey();
         }
