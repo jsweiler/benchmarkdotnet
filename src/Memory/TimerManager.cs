@@ -30,6 +30,7 @@ namespace Memory
             {
                 leakyObject.Dispose();
             }
+            _leakyObjects.Clear();
         }
     }
 }

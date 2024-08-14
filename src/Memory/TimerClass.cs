@@ -31,7 +31,7 @@ namespace Memory
 
         public void Dispose()
         {
-            Program.TimerManager.TimerEvent -= TimerManager_TimerEvent;
+            //Program.TimerManager.TimerEvent -= TimerManager_TimerEvent;
             _timer.Dispose();
         }
     }
