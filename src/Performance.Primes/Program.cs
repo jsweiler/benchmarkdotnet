@@ -25,7 +25,6 @@
         static bool IsPrime(long number)
         {
             if (number < 2) return false;
-            var sqrt = Math.Sqrt(number);
             for (long i = 2; i <= Math.Sqrt(number); i++)
             {
                 if (number % i == 0) return false;

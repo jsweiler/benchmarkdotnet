@@ -15,7 +15,7 @@ namespace Memory
 
         public void StartTimers()
         {
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 500; i++)
             {
                 var leakyObject = new TimerClass();
                 _leakyObjects.Add(leakyObject);

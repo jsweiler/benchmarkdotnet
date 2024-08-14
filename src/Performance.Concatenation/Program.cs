@@ -6,11 +6,11 @@ namespace Performance.Concatenation
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Press Enter to start...");
-            Console.ReadKey();
+            //Console.WriteLine("Press Enter to start...");
+            //Console.ReadKey();
 
             int limit = 100000;
-            string result = ConcatenateNumbers2(limit);
+            string result = ConcatenateNumbers(limit);
             Console.WriteLine($"Length of concatenated string: {result.Length}");
         }
 
