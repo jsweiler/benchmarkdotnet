@@ -21,7 +21,7 @@ namespace MemoryLeak.StaticReference
         }
     }
 
-    public static class LeakyClassStore
+    public static class DataStore
     {
         private static List<LeakyClass> _leakyObjects = new List<LeakyClass>();
 

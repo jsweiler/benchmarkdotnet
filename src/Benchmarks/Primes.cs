@@ -1,16 +1,20 @@
-﻿namespace Performance.Primes
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            int limit = 1000000;
-            var primes = GetPrimes2(limit);
-            Console.WriteLine($"Sum of primes up to {limit}: {primes.Sum()}");
-        }
+﻿using BenchmarkDotNet.Attributes;
 
-        static List<long> GetPrimes(int limit)
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Benchmarks
+{
+    [MemoryDiagnoser]
+    public class Primes
+    {
+        [Benchmark(Baseline = true)]
+        public List<long> GetPrimes()
         {
+            var limit = 10000;
             List<long> primes = new List<long>();
             for (long i = 2; i <= limit; i++)
             {
@@ -22,7 +26,7 @@
             return primes;
         }
 
-        static bool IsPrime(long number)
+        bool IsPrime(long number)
         {
             if (number < 2) return false;
             var sqrt = Math.Sqrt(number);
@@ -33,8 +37,10 @@
             return true;
         }
 
-        public static List<long> GetPrimes2(long limit)
+        [Benchmark]
+        public List<long> GetPrimes2()
         {
+            var limit = 10000;
             if (limit < 2)
             {
                 return new List<long>();

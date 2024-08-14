@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace Benchmarks
 {
     [SimpleJob(RuntimeMoniker.Net80)]
+    [SimpleJob(RuntimeMoniker.Net60)]
     public class Hashes
     {
         private const int N = 10000;

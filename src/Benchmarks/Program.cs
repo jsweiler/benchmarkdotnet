@@ -8,7 +8,9 @@ namespace Benchmarks
         {
             //var summary = BenchmarkRunner.Run<Hashes>();
 
-            var summary = BenchmarkRunner.Run<Loops>();
+            //var summary = BenchmarkRunner.Run<Loops>();
+
+            var summary = BenchmarkRunner.Run<Primes>();
 
             Console.ReadKey();
         }

@@ -14,6 +14,7 @@ namespace MemoryLeak.StaticReference
             for (int i = 0; i < 100000; i++)
             {
                 var leakyObject = new LeakyClass(i);
+                //DataStore.Add(leakyObject);
                 data.Add(leakyObject);
             }
         }

@@ -15,7 +15,7 @@ namespace Memory
 
         private void TimerManager_TimerEvent(object? sender, EventArgs e)
         {
-            Console.WriteLine("Timer manager event fired");
+            Console.WriteLine("Timer setup.");
         }
 
         public void StartTimer()
@@ -31,7 +31,7 @@ namespace Memory
 
         public void Dispose()
         {
-            //_timer.Elapsed -= eventHandler;
+            Program.TimerManager.TimerEvent -= TimerManager_TimerEvent;
             _timer.Dispose();
         }
     }
